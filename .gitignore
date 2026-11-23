@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Keil MDK build artifacts
+Objects/
+Listings/
+*.uvguix.*
+*.uvopt.bak
+
+# Local backups / OS files
+*.bak
+*.lnk
+.DS_Store
+Thumbs.db
