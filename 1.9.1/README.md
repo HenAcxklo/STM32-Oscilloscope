@@ -73,6 +73,8 @@ python main.py
 
 或双击 `启动.bat`。启动时自动尝试 `COM5 / 2000000`；打不开就手动输入/选择。
 
+> **不要用 `启动 - 快捷方式.lnk`**：`.lnk` 是绝对路径快捷方式，换电脑/移动目录后会失效；仓库和 Release 都不包含它。请使用本目录的 `启动.bat`，或命令行运行 `python main.py`。如果 `启动.bat` 一闪而过，在地址栏输入 `cmd` 后运行 `python main.py` 查看报错；ZIP 先解压再运行。
+
 配套固件在 `..\firmware\main.c`：STM32F103C8T6、PA0 采集、PA1 电位器调速、USART1 DMA、默认 2 Mbps。
 
 ## 6. 参数（`main.py` 顶部）

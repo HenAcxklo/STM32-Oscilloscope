@@ -65,6 +65,18 @@ python main.py
 
 On Windows you can also double-click `1.9.1\启动.bat`. The app tries `COM5 / 2000000` at startup; type or select the correct port/baud and press **Connect**.
 
+### Windows launcher / shortcut
+
+Use **`1.9.1\启动.bat`** (or run `python main.py` inside `1.9.1`). **Do not use `启动 - 快捷方式.lnk`**: a `.lnk` file stores an absolute path from the author’s machine, so it breaks after downloading, moving folders or using another PC. `.lnk` files are intentionally not shipped (`.gitignore` ignores `*.lnk`).
+
+If `启动.bat` closes immediately, open a terminal in `1.9.1` and run:
+
+```bat
+python main.py
+```
+
+Then fix the reported error (Python not on PATH, missing `PyQt5/pyqtgraph/pyserial/numpy`, or running from inside the ZIP without extracting it). Extract the ZIP first; if Windows blocks the downloaded archive, open its Properties and check **Unblock** before extracting.
+
 The serial port field accepts arbitrary names (for example `COM7`, `COM10`, `/dev/ttyUSB0`). The baud rate field accepts integers from **300 to 4,000,000**; the drop-down entries are shortcuts only. The baud rate must match the firmware.
 
 ## Protocol
