@@ -2,7 +2,7 @@
 
 A low-cost STM32F103C8T6 + PC oscilloscope. The MCU streams 12-bit ADC samples over a 2 Mbaud UART link; a PyQt5/pyqtgraph desktop app renders them with persistence, triggering and an extended time base.
 
-![preview](1.9.1/预览.png)
+![preview](预览.png)
 
 > Current stable release: **v1.9.1** · single channel · 256 samples/frame · 516-byte frames.
 
@@ -36,13 +36,10 @@ Use a USB-UART adapter that reliably supports **2 Mbaud** (CH340, CP2102 or FT23
 
 ```
 .
-├── 1.8.1/                  # previous host release
-├── 1.9.1/                  # current host release (editable port/baud)
-│   ├── main.py
-│   ├── requirements.txt
-│   ├── 启动.bat
-│   ├── README.md
-│   └── 预览.png
+├── main.py                 # PC host (PyQt5 + pyqtgraph)
+├── requirements.txt
+├── 启动.bat                # Windows one-click launcher
+├── 预览.png
 ├── firmware/
 │   ├── main.c              # STM32F103C8T6 acquisition firmware
 │   └── README.md
@@ -50,26 +47,26 @@ Use a USB-UART adapter that reliably supports **2 Mbaud** (CH340, CP2102 or FT23
 │   └── protocol.md         # 516-byte frame / timing specification
 ├── README.md
 ├── README_zh.md
+├── LICENSE
 └── VERSION
 ```
 
 ## Quick start
 
 ```bash
-cd 1.9.1
 python -m venv .venv
 .venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 python main.py
 ```
 
-On Windows you can also double-click `1.9.1\启动.bat`. The app tries `COM5 / 2000000` at startup; type or select the correct port/baud and press **Connect**.
+On Windows you can also double-click `启动.bat`. The app tries `COM5 / 2000000` at startup; type or select the correct port/baud and press **Connect**.
 
 ### Windows launcher / shortcut
 
-Use **`1.9.1\启动.bat`** (or run `python main.py` inside `1.9.1`). **Do not use `启动 - 快捷方式.lnk`**: a `.lnk` file stores an absolute path from the author’s machine, so it breaks after downloading, moving folders or using another PC. `.lnk` files are intentionally not shipped (`.gitignore` ignores `*.lnk`).
+Use **`启动.bat`** (or run `python main.py` in the repository root). **Do not use `启动 - 快捷方式.lnk`**: a `.lnk` file stores an absolute path from the author’s machine, so it breaks after downloading, moving folders or using another PC. `.lnk` files are intentionally not shipped (`.gitignore` ignores `*.lnk`).
 
-If `启动.bat` closes immediately, open a terminal in `1.9.1` and run:
+If `启动.bat` closes immediately, open a terminal in the repository root and run:
 
 ```bat
 python main.py
@@ -141,6 +138,6 @@ MIT License — see [LICENSE](LICENSE).
 | **1.8** | Firmware hardening: 7.5-cycle ADC sampling, EOC/calibration cleanup, DMA flag/CNDTR initialisation, timeout guards. |
 | **1.8.1** | Bug-fix/compatibility release: Qt binding guard, serial reconnect/close cleanup, frame resync, NaN-safe auto Y, documentation. No protocol change. |
 | **1.9** | Editable COM-port and baud-rate input (300–4,000,000), preserving the preset drop-downs; explicit validation instead of a silent default fallback. |
-| **1.9.1** | **Current release**: input validation/packaging pass for the editable port/baud build; version folders (`1.8.1/`, `1.9.1/`); documentation and preview updated. No protocol change. |
+| **1.9.1** | **Current release**: input validation/packaging pass for the editable port/baud build; flattened repository layout; documentation and preview updated. No protocol change. |
 
 The project is feature-complete for this hardware. Future work is limited to bug fixes and compatibility; the wire protocol is frozen at v1.
